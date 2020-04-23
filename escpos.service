@@ -1,0 +1,14 @@
+[Unit]
+Description=Escpos service
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+WorkingDirectory=/home/user/app/pharmstudio-escpos
+ExecStart=/usr/bin/python /home/user/app/pharmstudio-escpos/run.py
+
+[Install]
+WantedBy=multi-user.target
