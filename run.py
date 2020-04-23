@@ -15,8 +15,11 @@ def hello():
 @app.route("/print/", methods=['GET', 'POST'])
 def receipt():
     if request.method == 'POST':
-        p = printer.Usb(0x0416, 0x5011)
-        p.charcode('WPC1251')
+        #p = printer.Usb(0x0483, 0x070b)
+        p = printer.File("/dev/usb/lp0")
+        # p.charcode('WPC1251')
+        p._raw('\x1c\x2e')
+        p._raw('\x1b\x74\x17')
         p.set(align='CENTER', font='a', type='normal', width=1, height=1)
         p.image("logo.png")
         m = Markup(p)
