@@ -1,4 +1,3 @@
-# coding=utf-8
 from constants import SYMBOLS_PER_LINE
 
 
@@ -8,8 +7,8 @@ def split_every(n, s):
 
 class Formatter(object):
     printer = None
-    currency = u""
-    count_str = u"x"
+    currency = ""
+    count_str = "x"
     price_digits = 6
     space = 2
 
@@ -42,11 +41,11 @@ class Formatter(object):
         for index, line in enumerate(title_lines, start=1):
             if index == 1:
                 text = line.lstrip(' ').ljust(title_length, ' ') + \
-                       ((' '*self.space) + str(count) + self.count_str).rjust(title_offset) + u"\n"
+                       ((' '*self.space) + str(count) + self.count_str).rjust(title_offset) + "\n"
             elif index == 2:
                 text = line.lstrip(' ').ljust(title_length, ' ') + \
-                       ((' '*self.space) + str(price) + self.currency).rjust(title_offset) + u"\n"
+                       ((' '*self.space) + str(price) + self.currency).rjust(title_offset) + "\n"
             else:
-                text = line.lstrip(' ') + u"\n"
+                text = line.lstrip(' ') + "\n"
             self.printer.text(text.encode('cp1251'))
-        self.printer.text(''.ljust(32, '-') + u"\n".encode('cp1251'))
+        self.printer.text(str(''.ljust(32, '-') + "\n").encode('cp1251'))

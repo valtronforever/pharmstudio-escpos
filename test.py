@@ -1,12 +1,10 @@
-# coding=utf-8
-
 from escpos import *
 from formatter import Formatter
 from decimal import Decimal
 
 def tp(pp, raw, code):
     pp._raw(raw)
-    pp.text(str(code) + ' ' + u"тест\n".encode('cp1251'))
+    pp.text(str(str(code) + ' ' + "тест\n").encode('cp1251'))
 
 p = printer.File("/dev/usb/lp0")
 p._raw('\x1c\x2e')

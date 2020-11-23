@@ -14,8 +14,8 @@ except ImportError:
 import qrcode
 import time
 
-from constants import *
-from exceptions import *
+from .constants import *
+from .exceptions import *
 
 class Escpos:
     """ ESC/POS Printer object """
@@ -67,7 +67,7 @@ class Escpos:
 
 
         if im.size[0] > 512:
-            print  ("WARNING: Image is wider than 512 and could be truncated at print time ")
+            print("WARNING: Image is wider than 512 and could be truncated at print time ")
         if im.size[1] > 0xffff:
             raise ImageSizeError()
 

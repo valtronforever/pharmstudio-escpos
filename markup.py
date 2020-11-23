@@ -16,8 +16,8 @@ class Markup(object):
                     params[k] = int(v)
             self.printer.set(**params)
         else:
-            self.printer.text((line + u"\n").encode('cp1251'))
+            self.printer.text((line + "\n").encode('cp1251'))
 
     def read_text(self, text):
-        for line in text.split(u"\n"):
+        for line in text.split("\n"):
             self.read_line(line)
