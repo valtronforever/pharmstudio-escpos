@@ -1,1 +1,1 @@
-sudo apt-get install python-flask python-pil python-serial python-twisted
+sudo apt-get install python3-flask python3-pil python3-serial python3-twisted
