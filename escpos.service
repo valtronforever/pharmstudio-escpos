@@ -8,7 +8,7 @@ Type=simple
 Restart=always
 RestartSec=1
 WorkingDirectory=/home/user/app/pharmstudio-escpos
-ExecStart=/usr/bin/python /home/user/app/pharmstudio-escpos/run.py
+ExecStart=/usr/bin/python3 /home/user/app/pharmstudio-escpos/run.py
 
 [Install]
 WantedBy=multi-user.target
