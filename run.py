@@ -4,6 +4,7 @@ from escpos import *
 from markup import Markup
 
 app = Flask(__name__)
+#app.debug = True
 CORS(app)
 
 
@@ -15,8 +16,9 @@ def hello():
 @app.route("/print/", methods=['GET', 'POST'])
 def receipt():
     if request.method == 'POST':
-        #p = printer.Usb(0x0483, 0x070b)
-        p = printer.File("/dev/usb/lp0")
+    	# Get endpoints: sudo lsusb -v -d 0416:5011
+        p = printer.Usb(0x0416, 0x5011, out_ep=0x03)
+        #p = printer.File("/dev/usb/lp0")
         # p.charcode('WPC1251')
         p._raw('\x1c\x2e')
         p._raw('\x1b\x74\x17')

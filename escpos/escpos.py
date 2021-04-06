@@ -29,9 +29,9 @@ class Escpos:
         else:
             image_border = 32 - (size % 32)
             if (image_border % 2) == 0:
-                return (image_border / 2, image_border / 2)
+                return ((int(image_border / 2), int(image_border / 2)))
             else:
-                return (image_border / 2, (image_border / 2) + 1)
+                return ((int(image_border / 2), int((image_border / 2) + 1)))
 
 
     def _print_image(self, line, size):
@@ -41,8 +41,9 @@ class Escpos:
         buffer = ""
        
         self._raw(S_RASTER_N)
-        buffer = "%02X%02X%02X%02X" % (((size[0]/size[1])/8), 0, size[1]&0xff, size[1]>>8)
-        self._raw(buffer.decode('hex'))
+        buffer = "%02X%02X%02X%02X" % (int((size[0]/size[1])/8), 0, size[1]&0xff, size[1]>>8)
+        #self._raw(buffer.decode('hex'))
+        self._raw(bytearray.fromhex(buffer))
         buffer = ""
 
         while i < len(line):
@@ -51,7 +52,8 @@ class Escpos:
             i += 8
             cont += 1
             if cont % 4 == 0:
-                self._raw(buffer.decode("hex"))
+                #self._raw(buffer.decode("hex"))
+                self._raw(bytearray.fromhex(buffer))
                 buffer = ""
                 cont = 0
 

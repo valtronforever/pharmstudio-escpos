@@ -6,7 +6,8 @@ def tp(pp, raw, code):
     pp._raw(raw)
     pp.text(str(str(code) + ' ' + "тест\n").encode('cp1251'))
 
-p = printer.File("/dev/usb/lp0")
+#p = printer.File("/dev/usb/lp0")
+p = printer.Usb(0x0416, 0x5011, out_ep=0x03)
 p._raw('\x1c\x2e')
 p.set(align='CENTER', font='a', type='normal', width=1, height=1)
 tp(p, '\x1b\x74\x00', '00')
